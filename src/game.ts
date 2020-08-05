@@ -34,7 +34,7 @@ class ZombieAttack implements ISystem {
     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), dt * ROT_SPEED)
 
     // Continue to move towards the player until it is within 2m away
-    let distance = Vector3.DistanceSquared(transform.position, player.position) // Check distance between zombie and player
+    let distance = Vector3.DistanceSquared(transform.position, player.position) // Check distance squared as it's more optimized
     if (distance >= 4) { // Note: Distance is squared so a value of 4 is when the zombie is standing 2m away
       zombie.walk()
       let forwardVector = Vector3.Forward().rotate(transform.rotation)
